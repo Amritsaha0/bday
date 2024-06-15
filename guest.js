@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('comment-form');
     const guestComments = document.getElementById('guest-comments');
-    const wishesContainer = document.getElementById('wishes-container');
 
     // Load comments from localStorage
     const loadComments = () => {
@@ -34,8 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            const name = document.getElementById('guest-name').value;
-            const text = document.getElementById('comment-text').value;
+            const name = document.getElementById('Name').value.trim();
+            const text = document.getElementById('Wishes').value.trim();
 
             if (name && text) {
                 saveComment(name, text);
@@ -46,28 +45,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Initial load of comments
         loadComments();
-    }
-
-    // Display comments in wishes.html
-    if (wishesContainer) {
-        const comments = JSON.parse(localStorage.getItem('guestComments')) || [];
-        comments.forEach(comment => {
-            wishesContainer.appendChild(createCommentElement(comment));
-        });
-    }
-
-    // Clear wishes function
-    function clearWishes() {
-        // Clear the wishes from the HTML
-        wishesContainer.innerHTML = '';
-
-        // Clear the wishes from local storage
-        localStorage.removeItem('guestComments');
-    }
-
-    // Add event listener for the clear wishes button
-    const clearWishesBtn = document.getElementById('clear-wishes-btn');
-    if (clearWishesBtn) {
-        clearWishesBtn.addEventListener('click', clearWishes);
     }
 });
