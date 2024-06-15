@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('comment-form');
     const guestComments = document.getElementById('guest-comments');
+    const wishesContainer = document.getElementById('wishes-container'); // Added this line for wishes.html
 
     // Load comments from localStorage
     const loadComments = () => {
@@ -9,6 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
         comments.forEach(comment => {
             guestComments.appendChild(createCommentElement(comment));
         });
+
+        // Also load comments in wishes.html if wishesContainer exists
+        if (wishesContainer) {
+            wishesContainer.innerHTML = ''; // Clear existing content
+            comments.forEach(comment => {
+                wishesContainer.appendChild(createCommentElement(comment));
+            });
+        }
     };
 
     const saveComment = (name, text) => {
@@ -16,6 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const newComment = { name, text, date: new Date().toLocaleString() };
         comments.push(newComment);
         localStorage.setItem('guestComments', JSON.stringify(comments));
+
+        // Update comments in both guest.html and wishes.html if wishesContainer exists
+        if (wishesContainer) {
+            wishesContainer.appendChild(createCommentElement(newComment));
+        }
     };
 
     const createCommentElement = (comment) => {
@@ -33,12 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (form) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            const name = document.getElementById('Name').value.trim();
-            const text = document.getElementById('Wishes').value.trim();
+            const name = document.getElementById('guest-name').value;
+            const text = document.getElementById('comment-text').value;
 
             if (name && text) {
                 saveComment(name, text);
-                loadComments();
                 form.reset();
             }
         });
@@ -46,4 +59,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initial load of comments
         loadComments();
     }
+
+    // Countdown timer function (if needed)
+    // ...
+
+    // Check login status function (if needed)
+    // ...
 });
