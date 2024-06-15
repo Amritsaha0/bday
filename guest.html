@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guestbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <audio id="birthday-music" src="Romantic-Birthday.mp3" loop autoplay></audio>
+    <div class="container guest-container">
+        <h1 class="animate-text">Happy Birthday! Leave your wishes for Ziya!</h1>
+        <div id="countdown" class="countdown"></div>
+        <section id="guestbook">
+            <h2>Your Wishes</h2>
+            <form id="comment-form" class="guest-form">
+                <input type="text" id="guest-name" placeholder="Your Name" required>
+                <textarea id="comment-text" placeholder="Leave your message here..." required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="guest-comments">
+                <!-- Guest comments will be dynamically added here -->
+            </div>
+        </section>
+    </div>
+
+    <script src="guest.js"></script>
+</body>
+</html>

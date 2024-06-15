@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 48px;
+    color: #cf6a0b;
+    margin-bottom: 30px;
+    
+}
+
+.fullscreen-timeline {
+    margin-bottom: 20px;
+}
+
+.fullscreen-timeline button {
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.fullscreen-timeline button:hover {
+    background-color: #e5554e;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timeline-item {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s, transform 0.5s;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-left: 5px solid #ff6f61;
+    padding: 20px;
+    margin-bottom: 20px;
+    max-width: 800px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-item.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item h2 {
+    color: #ff6f61;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.timeline-item p {
+    color: #666;
+    font-size: 16px;
+}
+
+.date {
+    color: #999;
+    font-size: 14px;
+}
+
+.hidden {
+    display: none;
+}
+.timeline-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-item {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+/* Add styles for images */
+.timeline-item img {
+    width: 400px; /* Set the width */
+    height: 400px; /* Set the height */
+    object-fit: cover; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Add some spacing between images */
+}
+.timeline-item img.rotate {
+    transform: rotate(-90deg); /* Rotate the image by 45 degrees */
+}
