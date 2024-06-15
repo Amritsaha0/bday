@@ -39,6 +39,21 @@
             font-size: 1.1em;
             line-height: 1.6;
         }
+
+        .clear-btn {
+            background-color: #ff69b4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .clear-btn:hover {
+            background-color: #ff1493;
+        }
     </style>
 </head>
 <body>
@@ -49,6 +64,7 @@
         <div id="wishes-container" class="wishes-container">
             <!-- Guest messages will be dynamically added here -->
         </div>
+        <button id="clear-wishes-btn" class="clear-btn">Clear Wishes</button>
     </div>
 
     <script>
@@ -58,7 +74,7 @@
             // Function to fetch and display wishes from Google Sheets
             const loadWishes = async () => {
                 try {
-                    const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRGn_ZVBKDYCK1uRH46fxon9YfxARHrEnn5m7_tUqm_diYG1zsmY6QPHAn8k5tzy-su4XU_EMYHx5ej/pub?output=csv');
+                    const response = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vSiJHHqgl6Vh46oioIyshNOrG45VwTm5Ia3-qjEmE-rnSlEmGtyvzRHUzIzmyQFZLibQ8PFzP3_w7lh/pub?gid=948567320&single=true&output=csv');
                     if (!response.ok) {
                         throw new Error('Failed to load wishes');
                     }
@@ -104,6 +120,16 @@
 
             // Load wishes when the page loads
             await loadWishes();
+
+            // Clear wishes function
+            const clearWishes = () => {
+                wishesContainer.innerHTML = ''; // Clear HTML content
+                // Optionally: You can also add code to clear data from Google Sheets here
+                // Note: Directly manipulating Google Sheets data requires additional API integration
+            };
+
+            // Event listener for the clear wishes button
+            document.getElementById('clear-wishes-btn').addEventListener('click', clearWishes);
         });
     </script>
 </body>
